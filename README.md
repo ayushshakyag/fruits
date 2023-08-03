@@ -16,7 +16,14 @@ To get started with the Fruit Sorting API, follow these steps:
 
 ### Get Sorted Fruits
 
-- URL: `/`
-- Method: GET
-- Description: Retrieves a sorted list of fruits based on their color.
-- Response Format: JSON
+Endpoints
+Get Sorted Fruits
+URL: /
+
+Method: GET
+
+Description: Retrieves a sorted list of fruits based on their color. You can specify the sorting order using the sort query parameter.
+
+Query Parameters:
+
+sort: (optional) Specifies the field to sort the fruits. Supported values are "id", "color", and "name". To sort in descending order, add a "-" before the field name. Default sorting is by "id" in ascending order.
