@@ -16,11 +16,20 @@ const fruits = [
   new Fruit(4, 'Mango', 'Green'),
 ];
 
+// Function to create a copy of the original fruits array and then sort it
+function getSortedFruits(sortBy) {
+  const sortedFruits = [...fruits];
+  sortedFruits.sort((a, b) => {
+    return sortBy === 'color' ? a.color.localeCompare(b.color) : a.id - b.id;
+  });
+  return sortedFruits;
+}
+
 app.get('/', (req, res) => {
-  const sortedFruits = fruits.sort((a, b) => a.color.localeCompare(b.color));
+  const sortBy = req.query.sort || 'id'; // Default sort by id if query parameter not provided
+  const sortedFruits = getSortedFruits(sortBy);
   res.json(sortedFruits);
 });
-
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
