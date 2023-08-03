@@ -20,7 +20,21 @@ const fruits = [
 function getSortedFruits(sortBy) {
   const sortedFruits = [...fruits];
   sortedFruits.sort((a, b) => {
-    return sortBy === 'color' ? a.color.localeCompare(b.color) : a.id - b.id;
+    if (sortBy === 'color') {
+      return a.color.localeCompare(b.color);
+    } else if (sortBy === '-color') {
+      return b.color.localeCompare(a.color);
+    } else if (sortBy === 'name') {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === '-name') {
+      return b.name.localeCompare(a.name);
+    } else if (sortBy === 'id') {
+      return a.id - b.id;
+    } else if (sortBy === '-id') {
+      return b.id - a.id; 
+    } else {
+      return a.id - b.id; 
+    }
   });
   return sortedFruits;
 }
